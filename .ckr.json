@@ -1,0 +1,15 @@
+{
+  "data_uoa": "ck-scc",
+  "data_uid": "c3b8115e0e3d5493",
+  "data_alias": "ck-scc",
+  "data_name": "ck-scc",
+  "dict": {
+    "shared": "git",
+    "url": "https://github.com/reproindex/ck-scc",
+    "repo_deps": [
+      {
+        "repo_uoa": "ck-env"
+      }
+    ]
+  }
+}
