@@ -19,22 +19,48 @@ You need to install Collective Knowledge framework (CK) as described
 CK was designed to be very portable with minimal dependencies (any python and git client). 
 However if you experience any problems during installation, do not hesitate to ask for help
 using our [Slack channel](https://bit.ly/ck-slack) 
-or [Google group](https://bit.ly/ck-google-group)
+or [Google group](https://bit.ly/ck-google-group).
 
 If you have never used CK, we also suggest you to check 
 this [blog article](https://michel.steuwer.info/About-CK),
 the [CK getting started guide](https://github.com/ctuning/ck/wiki/First-Steps),
-and the [list of shared CK actions](https://ReproIndex.com/components) which
-you can reuse in your research projects.
+and the [list of shared CK modules and actions](https://ReproIndex.com/components/&c=module) 
+which you can reuse in your research projects.
 
 ## SCC workflow installation
 
-You can now install this repository with a SCC workflow as follows:
+You can install this repository with a SCC workflow as follows:
 
 ```
 $ ck pull repo --url=https://github.com/reproindex/ck-scc
 ```
 
-You now have an access to different 
-[research automation "actions"](https://ReproIndex.com/components/&c=module) 
-shared by the community.
+## Creating a dummy CK repository for your SCC artifacts
+
+We assume that you were already assigned a team number {TN}. 
+You can create a dummy CK repository for your artifacts as follows:
+
+```
+$ ck prepare scc-workflow
+```
+
+
+
+## Archiving repository with your SCC submission
+
+You can pack your submission as follows:
+```
+$ ck zip repo:scc-2019-{TN}
+```
+
+CK will create ckr-scc-2019-{TN}.zip file which you can send to evaluators or share with the community.
+
+## Unpacking and testing SCC submission
+
+If you are an evaluator, you can unpack and register above CK package as follows:
+```
+$ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
+```
+
+
+
