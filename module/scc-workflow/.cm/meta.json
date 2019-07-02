@@ -3,6 +3,9 @@
     "compile": {
       "desc": "compile application"
     },
+    "pack": {
+      "desc": "pack your Digital Artifact"
+    },
     "plot": {
       "desc": "plot graphs"
     },
@@ -23,7 +26,8 @@
   "developer_webpage": "https://fursin.net/research.html",
   "license": "See CK LICENSE.txt for licensing details",
   "module_deps": {
-    "repo": "befd7892b0d469e9"
+    "repo": "befd7892b0d469e9",
+    "scc-workflow": ""
   },
   "workflow": "yes",
   "workflow_type": "Student Cluster Competition universal workflow"

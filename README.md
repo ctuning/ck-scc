@@ -45,11 +45,11 @@ You can create a dummy CK repository for your artifacts as follows:
 $ ck prepare scc-workflow
 ```
 
-CK will ask you about the year of the SCC competition and your team number.
-It will then create a CK repository "scc-{year}-{team}"
-with a CK entry "scc-workflow/{year}-{team}" to keep your Digital Artifact.
+CK will ask you about the year of the SCC competition {YEAR} and your team number {TEAM}.
+It will then create a CK repository "scc-{YEAR}-{TEAM}"
+with a CK entry "scc-workflow/{YEAR}-{TEAM}" to keep your Digital Artifact.
 This entry will already have a directory structure required 
-for your artifact submission (taken from the CK entry "scc-workflow:template").
+for your artifact submission (taken from the CK entry "[scc-workflow:template](https://github.com/reproindex/ck-scc/tree/master/scc-workflow/template)").
 
 For example, if your team number if 5 and the competition year is 2019, 
 CK will create repo:scc-2019-5 with an entry scc-workflow:2019-5:
@@ -71,21 +71,24 @@ $ ls -a `ck find scc-workflow:2019-5`
 
 
 
-## Archiving repository with your SCC submission
+## Packing your Digital Artifact
 
-You can pack your submission as follows:
+You can pack your Digital artifact as follows:
 ```
-$ ck zip repo:scc-2019-{TN}
+$ ck pack scc-workflow:{YEAR}-{TEAM}
 ```
 
-CK will create ckr-scc-2019-{TN}.zip file which you can send to evaluators or share with the community.
+CK will create a "scc-{YEAR}-{TEAM}.zip" file which you can send to evaluators
 
-## Unpacking and testing SCC submission
+## Packing the CK repository with your Digital Artifact
 
-If you are an evaluator, you can unpack and register above CK package as follows:
+You can also pack and share the whole CK repository with your Digital Artifact:
+
+```
+$  ck zip repo:scc-{YEAR}-{TEAM} 
+```
+
+In such case, evaluators or users can unpack and test it via CK as follows:
 ```
 $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 ```
-
-
-

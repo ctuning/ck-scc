@@ -254,10 +254,11 @@ def prepare(i):
     ck.out('Creating SCC workflow entry "'+duoa+'" to keep you artifacts ...')
 
     ck.out('')
-    ii={'action':'add',
+    ii={'action':'copy',
         'module_uoa':work['self_module_uid'],
-        'data_uoa':duoa,
-        'repo_uoa':repo,
+        'data_uoa':'template',
+        'new_repo_uoa':repo,
+        'new_data_uoa':duoa,
         'out':o}
 
     if len(tags)>0:
@@ -268,17 +269,11 @@ def prepare(i):
 
     pa=r['path'] # artifacts
 
-
-
-    # Creating structure
     ck.out('')
-    ck.out('Creating SCC artifact directory structure in "'+duoa+'" ...')
+    ck.out('Please go to directory "'+pa+'" to prepare your Digital Artifact')
 
-    p1=
-
-
-
-
+    ck.out('')
+    ck.out('You can pack it via "ck pack scc-workflow:'+duoa+'" when ready!')
 
     return {'return':0}
 
@@ -292,7 +287,73 @@ def find_artifact(i):
 
     duoa=''
 
+    # Checking how many artifacts exist
+
 
 
 
     return {'return':0, 'data_uoa':duoa}
+
+##############################################################################
+# pack your Digital Artifact
+
+def pack(i):
+    """
+    Input:  {
+              (data_uoa) - pack this digital artifact
+
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    o=i.get('out','')
+
+    duoa=i.get('data_uoa','')
+    if duoa=='':
+       return {'return':1, 'error':'please specify the CK entry with your Digital artifact (for example "ck pack scc-workflow:2019-6")'}
+
+    ii={'action':'find',
+        'module_uoa':work['self_module_uid'],
+        'data_uoa':duoa}
+    r=ck.access(ii)
+    if r['return']>0: return r
+
+    p=r['path']
+
+    ck.out('Packing Digital Artifact from '+p+' ...')
+
+    filename='scc-'+duoa+'.zip'
+
+    # Prepare archive
+    import zipfile
+
+    zip_method=zipfile.ZIP_DEFLATED
+
+    r=ck.list_all_files({'path':p})
+    if r['return']>0: return r
+
+    fl=r['list']
+
+    # Write archive
+    try:
+       f=open(filename, 'wb')
+       z=zipfile.ZipFile(f, 'w', zip_method)
+       for fn in fl:
+           p1=os.path.join(p, fn)
+           z.write(p1, fn, zip_method)
+       z.close()
+       f.close()
+
+    except Exception as e:
+       return {'return':1, 'error':'failed to pack your Digital Artiact ('+format(e)+')'}
+
+    ck.out('')
+    ck.out('Digital Artifact Archive: '+filename)
+
+    return {'return':0}
