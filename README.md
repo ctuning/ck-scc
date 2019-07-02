@@ -47,18 +47,26 @@ $ ck prepare scc-workflow
 
 CK will ask you about the year of the SCC competition {YEAR} and your team number {TEAM}.
 It will then create a CK repository "scc-{YEAR}-{TEAM}"
-with a CK entry "scc-workflow/{YEAR}-{TEAM}" to keep your Digital Artifact.
+with a CK entry "scc-workflow:{YEAR}-{TEAM}" to keep your Digital Artifact.
 This entry will already have a directory structure required 
-for your artifact submission (taken from the CK entry "[scc-workflow:template](https://github.com/reproindex/ck-scc/tree/master/scc-workflow/template)").
+for your artifact submission (taken from the CK entry 
+"[scc-workflow:template](https://github.com/reproindex/ck-scc/tree/master/scc-workflow/template)").
 
-For example, if your team number if 5 and the competition year is 2019, 
-CK will create repo:scc-2019-5 with an entry scc-workflow:2019-5:
+For example, if your team number is 2 and the competition year is 2019, 
+CK will create repo:scc-2019-2 with an entry scc-workflow:2019-2:
+
 ```
 $ ck ls repo:scc*
-scc-2019-5
 
-$ ls -a `ck find scc-workflow:2019-5`
+ scc-2019-2
 
+$ ls -a `ck find scc-workflow:2019-2`
+
+ .  ..  .cm  ReproducibilityChallenge
+
+$ ls -a `ck find scc-workflow:2019-2`/ReproducibilityChallenge
+
+ .  ..  compile  doc  figures  run
 
 ```
 
