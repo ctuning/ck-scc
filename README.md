@@ -9,7 +9,8 @@
 
 This repository contains an evolving [Collective Knowledge](https://github.com/ctuning/ck) 
 workflow to standardize the preparation, execution and validation 
-of submissions for the [Student Cluster Competition Reproducibility Challenge](http://www.studentclustercompetition.us/).
+of submissions (Digital Artifact) 
+for the [Student Cluster Competition Reproducibility Challenge](http://www.studentclustercompetition.us/).
 
 ## CK installation
 
@@ -29,13 +30,13 @@ which you can reuse in your research projects.
 
 ## SCC workflow installation
 
-You can install this repository with a SCC workflow as follows:
+You need to install this repository to be able to reuse SCC automation actions as follows:
 
 ```
 $ ck pull repo --url=https://github.com/reproindex/ck-scc
 ```
 
-## Creating a dummy CK repository for your SCC artifacts
+## Creating a dummy CK repository for your Digital Artifact
 
 We assume that you were already assigned a team number {TN}. 
 You can create a dummy CK repository for your artifacts as follows:
@@ -43,6 +44,30 @@ You can create a dummy CK repository for your artifacts as follows:
 ```
 $ ck prepare scc-workflow
 ```
+
+CK will ask you about the year of the SCC competition and your team number.
+It will then create a CK repository "scc-{year}-{team}"
+with a CK entry "scc-workflow/{year}-{team}" to keep your Digital Artifact.
+This entry will already have a directory structure required 
+for your artifact submission (taken from the CK entry "scc-workflow:template").
+
+For example, if your team number if 5 and the competition year is 2019, 
+CK will create repo:scc-2019-5 with an entry scc-workflow:2019-5:
+```
+$ ck ls repo:scc*
+scc-2019-5
+
+$ ls -a `ck find scc-workflow:2019-5`
+
+
+```
+
+
+
+
+
+
+
 
 
 

@@ -195,7 +195,7 @@ def prepare(i):
 
        if team=='':
           ck.out('')
-          r=ck.inp({'text':'Please enter the number of your team: '})
+          r=ck.inp({'text':'Please enter your team number: '})
           if r['return']>0: return r
 
           team=r['string'].strip()
@@ -268,7 +268,13 @@ def prepare(i):
 
     pa=r['path'] # artifacts
 
+
+
     # Creating structure
+    ck.out('')
+    ck.out('Creating SCC artifact directory structure in "'+duoa+'" ...')
+
+    p1=
 
 
 
