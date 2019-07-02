@@ -109,7 +109,6 @@ $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 We plan to add [automatic detection](https://ReproIndex.com/components/&c=soft) of required software, models and data sets,
 [installation of missing packages](https://ReproIndex.com/components/&c=package), unified benchmarking
 and experiment reply based on this [CK SCC18 example](https://github.com/ctuning/ck-scc18).
-
 We also plan to automate submission, visualization and comparison of results 
 via [CK dashboards](https://cKnowledge.org/dashboard).
 
