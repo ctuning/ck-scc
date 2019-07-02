@@ -17,7 +17,7 @@ for the [Student Cluster Competition Reproducibility Challenge](http://www.stude
 You need to install Collective Knowledge framework (CK) as described 
 [here](https://github.com/ctuning/ck#Installation). 
 
-CK was designed to be very portable with minimal dependencies (any python and git client). 
+CK was designed to be very portable with minimal dependencies (any Python and Git client). 
 However if you experience any problems during installation, do not hesitate to ask for help
 using our [Slack channel](https://bit.ly/ck-slack) 
 or [Google group](https://bit.ly/ck-google-group).
@@ -70,14 +70,17 @@ $ ls -a `ck find scc-workflow:2019-2`/ReproducibilityChallenge
 
 ```
 
+## Compiling application
 
+TBD
 
+## Running application
 
+TBD
 
+## Plotting results
 
-
-
-
+TBD
 
 ## Packing your Digital Artifact
 
@@ -103,14 +106,15 @@ $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 
 ## Future work
 
-We plan to add automatic detection or installation of required software, models and data sets
-using CK packages based on this [CK SCC18 example](https://github.com/ctuning/ck-scc18).
+We plan to add [automatic detection](https://ReproIndex.com/components/&c=soft) of required software, models and data sets,
+[installation of missing packages](https://ReproIndex.com/components/&c=package), unified benchmarking
+and experiment reply based on this [CK SCC18 example](https://github.com/ctuning/ck-scc18).
 
 We also plan to automate submission, visualization and comparison of results 
-using [CK dashboards](https://cKnowledge.org/dashboard).
+via [CK dashboards](https://cKnowledge.org/dashboard).
 
 ## Feedback 
 
-If you have questions or suggestions, do not hestitate to contact us via 
+If you have questions or suggestions, do not hesitate to contact us via 
 our [open discussion group](https://groups.google.com/forum/#!forum/collective-knowledge) 
 or our [Slack channel](http://bit.ly/ck-slack).
