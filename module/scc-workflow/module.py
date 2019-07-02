@@ -30,8 +30,6 @@ def init(i):
     """
     return {'return':0}
 
-
-
 ##############################################################################
 # compile application
 
@@ -52,10 +50,11 @@ def compile(i):
     # Find artifact
 
     r=find_artifact(i)
-    if r['return']>0: return 
+    if r['return']>0: return  r
 
     duoa=r['data_uoa']
 
+    ck.out('')
     ck.out('TBD')
 
 
@@ -79,10 +78,11 @@ def run(i):
     """
 
     r=find_artifact(i)
-    if r['return']>0: return 
+    if r['return']>0: return r
 
     duoa=r['data_uoa']
 
+    ck.out('')
     ck.out('TBD')
 
 
@@ -106,10 +106,11 @@ def test(i):
     """
 
     r=find_artifact(i)
-    if r['return']>0: return 
+    if r['return']>0: return r
 
     duoa=r['data_uoa']
 
+    ck.out('')
     ck.out('TBD')
 
 
@@ -133,10 +134,11 @@ def plot(i):
     """
 
     r=find_artifact(i)
-    if r['return']>0: return 
+    if r['return']>0: return r
 
     duoa=r['data_uoa']
 
+    ck.out('')
     ck.out('TBD')
 
 
@@ -277,7 +279,6 @@ def prepare(i):
 
     return {'return':0}
 
-
 ##############################################################################
 # find artifact entry
 
@@ -285,14 +286,50 @@ def find_artifact(i):
 
     o=i.get('out','')
 
-    duoa=''
+    duoa=i.get('data_uoa','')
 
     # Checking how many artifacts exist
+    r=ck.access({'action':'search',
+                 'module_uoa':work['self_module_uid'],
+                 'data_uoa':duoa})
+    if r['return']>0: return r
 
+    lst1=r['lst']
+    lst=[]
 
+    # Prune template
+    for q in lst1:
+        if q.get('data_uoa','')!='template':
+           lst.append(q)
 
+    # Select
+    if len(lst)==0:
+       return {'return':1, 'error':'no SCC workflows found. Please use "ck prepare scc-workflow"'}
+    elif len(lst)==1:
+       duoa=lst[0]['data_uoa']
+    else:
+       ck.out('')
+       ck.out('Select SCC workflow:')
+       ck.out('')
 
-    return {'return':0, 'data_uoa':duoa}
+       r=ck.select_uoa({'choices':lst})
+       if r['return']>0: return r
+       duoa=r['choice']
+
+    # Get path
+    r=ck.access({'action':'load',
+                 'module_uoa':work['self_module_uid'],
+                 'data_uoa':duoa})
+    if r['return']>0: return r
+
+    p=r['path']
+
+    ck.out('')
+    ck.out('SCC digital artifact directory: '+p)
+
+    os.chdir(p)
+
+    return {'return':0, 'data_uoa':duoa, 'path':p}
 
 ##############################################################################
 # pack your Digital Artifact

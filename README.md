@@ -86,7 +86,7 @@ You can pack your Digital artifact as follows:
 $ ck pack scc-workflow:{YEAR}-{TEAM}
 ```
 
-CK will create a "scc-{YEAR}-{TEAM}.zip" file which you can send to evaluators
+The file "scc-{YEAR}-{TEAM}.zip" with your Digital Artifact will be created in your current directory.
 
 ## Packing the CK repository with your Digital Artifact
 
@@ -96,7 +96,21 @@ You can also pack and share the whole CK repository with your Digital Artifact:
 $  ck zip repo:scc-{YEAR}-{TEAM} 
 ```
 
-In such case, evaluators or users can unpack and test it via CK as follows:
+In such case, it will be easier for evaluators or users to unpack and test it in standard way via CK as follows:
 ```
 $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 ```
+
+## Future work
+
+We plan to add automatic detection or installation of required software, models and data sets
+using CK packages based on this [CK SCC18 example](https://github.com/ctuning/ck-scc18).
+
+We also plan to automate submission, visualization and comparison of results 
+using [CK dashboards](https://cKnowledge.org/dashboard).
+
+## Feedback 
+
+If you have questions or suggestions, do not hestitate to contact us via 
+our [open discussion group](https://groups.google.com/forum/#!forum/collective-knowledge) 
+or our [Slack channel](http://bit.ly/ck-slack).
