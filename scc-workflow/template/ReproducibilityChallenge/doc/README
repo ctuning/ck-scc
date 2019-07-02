@@ -1,0 +1,10 @@
+This can be in Markdown or plain text. This will serve asa guide 
+to understand what the contents of the artifact are and
+how to use them. It should include:
+
+* A description of the task at hand
+* A description of the contents of the artifact
+* Instructions on how to run/view/use each part of the artifact
+* How to compare the artifact’s output with the output presented in the Normal Modes paper
+
+The doc directory should also contain your final reproducibility report in .pdf format
