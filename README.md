@@ -18,13 +18,12 @@ You need to install the Collective Knowledge framework (CK) as described
 
 CK is a community project to share and reuse automation tasks in the form 
 of [Python actions with Unique ID, JSON meta description and standardized API](https://reproindex.com/components/&c=module). 
-For example, you can see all Python actions for the SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
+For example, you can see all Python actions for this SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
 
 CK was designed to be very small and portable: 
 CK only requires Python 2.7 or 3+, git and wget, 
 can run natively on practically any system, and complements many existing DevOps tools.
-
-If you encounter any problem during installation, do not hesitate 
+If you encounter a problem during installation, do not hesitate 
 to submit a [GitHub ticket](https://github.com/ctuning/ck/issues)
 or ask for help using the [CK Slack channel](https://bit.ly/ck-slack) 
 or [CK Google group](https://bit.ly/ck-google-group).
@@ -78,8 +77,8 @@ $ ls -a `ck find scc-workflow:2019-2`/ReproducibilityChallenge
 ## Installing dependencies
 
 You should go to the above directory with your digital artifact and 
-provide installation commands required to install all dependencies
-for the SCC applications on your machine in the following script:
+provide commands required to install all dependencies
+for the SCC application on your machine in the following script:
 ```
 ReproducibilityChallenge/compile/install-deps.sh
 ```
@@ -89,7 +88,7 @@ You and other users will be able to run this script via CK using the following C
 $ ck install_deps scc-workflow
 ```
 
-You should also describe how to install dependencies in the following ReadMe file:
+You should also describe how to install all dependencies in the following ReadMe file:
 ```
 ReproducibilityChallenge/compile/README
 ```
@@ -97,8 +96,8 @@ ReproducibilityChallenge/compile/README
 ## Compiling application
 
 You should go to the above directory with your digital artifact and 
-provide installation commands required to install all dependencies
-for the SCC applications on your machine in the following script:
+provide all commands required to compiler the SCC application
+on your machine in the following script:
 ```
 ReproducibilityChallenge/compile/install-deps.sh
 ```
@@ -108,7 +107,7 @@ You and other users will be able to run this script via CK using the following C
 $ ck install_deps scc-workflow
 ```
 
-You should also describe how to install dependencies in the following ReadMe file:
+You should also provide compilation instructions in the following ReadMe file:
 ```
 ReproducibilityChallenge/compile/README
 ```
@@ -168,6 +167,7 @@ $ ck post_process scc-workflow
 You should also describe how to run the SCC application in the following ReadMe file:
 ```
 ReproducibilityChallenge/run/scripts/README
+```
 
 ## Plotting graphs
 
@@ -211,7 +211,7 @@ $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 
 ## Extra notes
 
-* You can run all above actions (install_deps, compile, download_data, run_analysis, post_process and plot using one command: 
+* You can run all above actions (install_deps, compile, download_data, run_analysis, post_process and plot) using CK "run" action as follows:
 ```
 $ ck run scc-workflow
 ```
