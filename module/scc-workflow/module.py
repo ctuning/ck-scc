@@ -154,7 +154,7 @@ def prepare(i):
                            use it instead of year/team below
                  or
               (data)
-               
+
               (repo)     - CK repo to be created (it will keep user artifacts)
 
               (year) - /string/ competition year
