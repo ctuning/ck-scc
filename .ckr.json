@@ -8,7 +8,8 @@
     "url": "https://github.com/reproindex/ck-scc",
     "repo_deps": [
       {
-        "repo_uoa": "ck-env"
+        "repo_uoa": "ck-env",
+        "repo_url": "https://github.com/ctuning/ck-env"
       }
     ]
   }

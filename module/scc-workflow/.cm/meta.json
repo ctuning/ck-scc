@@ -3,16 +3,28 @@
     "compile": {
       "desc": "compile application"
     },
+    "download_data": {
+      "desc": "download data for the workflow"
+    },
+    "install_deps": {
+      "desc": "install dependencies"
+    },
     "pack": {
       "desc": "pack your Digital Artifact"
     },
     "plot": {
       "desc": "plot graphs"
     },
+    "post_process": {
+      "desc": "post process results"
+    },
     "prepare": {
       "desc": "prepare SCC workflow"
     },
     "run": {
+      "desc": "run application"
+    },
+    "run_analysis": {
       "desc": "run application"
     },
     "test": {

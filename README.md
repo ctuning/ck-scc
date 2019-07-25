@@ -7,30 +7,35 @@
 
 ## Introduction
 
-This repository contains an evolving [Collective Knowledge](https://github.com/ctuning/ck) 
-workflow to standardize the preparation, execution and validation 
-of submissions (Digital Artifact) 
-for the [Student Cluster Competition Reproducibility Challenge](http://www.studentclustercompetition.us/).
+This repository contains an evolving [Collective Knowledge](https://cKnowledge.org) 
+workflow to standardize the preparation, execution and validation of submissions
+(Digital Artifacts) for the [Student Cluster Competition Reproducibility Challenge](http://www.studentclustercompetition.us/)
 
 ## CK installation
 
-You need to install Collective Knowledge framework (CK) as described 
+You need to install the Collective Knowledge framework (CK) as described 
 [here](https://github.com/ctuning/ck#Installation). 
 
-CK was designed to be very portable with minimal dependencies (any Python and Git client). 
-However if you experience any problems during installation, do not hesitate to ask for help
-using our [Slack channel](https://bit.ly/ck-slack) 
-or [Google group](https://bit.ly/ck-google-group).
+CK is a community project to share and reuse automation tasks in the form 
+of [Python actions with Unique ID, JSON meta description and standardized API](https://reproindex.com/components/&c=module). 
+For example, you can see all Python actions for the SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
+
+CK was designed to be very small and portable: 
+CK only requires Python 2.7 or 3+, git and wget, 
+can run natively on practically any system, and complements many existing DevOps tools.
+
+If you encounter any problem during installation, do not hesitate 
+to submit a [GitHub ticket](https://github.com/ctuning/ck/issues)
+or ask for help using the [CK Slack channel](https://bit.ly/ck-slack) 
+or [CK Google group](https://bit.ly/ck-google-group).
 
 If you have never used CK, we also suggest you to check 
-this [blog article](https://michel.steuwer.info/About-CK),
-the [CK getting started guide](https://github.com/ctuning/ck/wiki/First-Steps),
-and the [list of shared CK modules and actions](https://ReproIndex.com/components/&c=module) 
-which you can reuse in your research projects.
+this [blog article](https://michel.steuwer.info/About-CK) and
+the [CK getting started guide](https://github.com/ctuning/ck/wiki/First-Steps).
 
 ## SCC workflow installation
 
-You need to install this repository to be able to reuse SCC automation actions as follows:
+You need to install this repository to be able to reuse CK-SCC automation actions as follows:
 
 ```
 $ ck pull repo --url=https://github.com/reproindex/ck-scc
@@ -70,17 +75,117 @@ $ ls -a `ck find scc-workflow:2019-2`/ReproducibilityChallenge
 
 ```
 
+## Installing dependencies
+
+You should go to the above directory with your digital artifact and 
+provide installation commands required to install all dependencies
+for the SCC applications on your machine in the following script:
+```
+ReproducibilityChallenge/compile/install-deps.sh
+```
+
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck install_deps scc-workflow
+```
+
+You should also describe how to install dependencies in the following ReadMe file:
+```
+ReproducibilityChallenge/compile/README
+```
+
 ## Compiling application
 
-TBD
+You should go to the above directory with your digital artifact and 
+provide installation commands required to install all dependencies
+for the SCC applications on your machine in the following script:
+```
+ReproducibilityChallenge/compile/install-deps.sh
+```
+
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck install_deps scc-workflow
+```
+
+You should also describe how to install dependencies in the following ReadMe file:
+```
+ReproducibilityChallenge/compile/README
+```
+
+## Downloading input
+
+You should go to the CK directory of your digital artifact and 
+check/update all commands required to download all input files
+for the SCC application in the following script:
+```
+ReproducibilityChallenge/run/scripts/download-data.sh
+```
+
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck download_data scc-workflow
+```
+
+You should also describe how to download data in the following ReadMe file:
+```
+ReproducibilityChallenge/run/scripts/README
+```
 
 ## Running application
 
-TBD
+You should go to the CK directory of your digital artifact and 
+add all commands required to run the SCC application
+in the following script:
+```
+ReproducibilityChallenge/run/scripts/run.sh
+```
 
-## Plotting results
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck run_analysis scc-workflow
+```
 
-TBD
+You should also describe how to run the SCC application in the following ReadMe file:
+```
+ReproducibilityChallenge/run/scripts/README
+```
+
+## Post processing and validating results
+
+You should go to the CK directory of your digital artifact and 
+add all commands required to post process and validate the results
+of the SCC application in the following script:
+```
+ReproducibilityChallenge/run/scripts/post-process.sh
+```
+
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck post_process scc-workflow
+```
+
+You should also describe how to run the SCC application in the following ReadMe file:
+```
+ReproducibilityChallenge/run/scripts/README
+
+## Plotting graphs
+
+You should go to the CK directory of your digital artifact and 
+add all commands required to plot figures for the SCC application
+in the following script:
+```
+ReproducibilityChallenge/figures/scripts/plot.sh
+```
+
+You and other users will be able to run this script via CK using the following CK action:
+```
+$ ck plot scc-workflow
+```
+
+You should also describe how to plot graphs in the following ReadMe file:
+```
+ReproducibilityChallenge/figures/scripts/README
 
 ## Packing your Digital Artifact
 
@@ -104,16 +209,27 @@ In such case, it will be easier for evaluators or users to unpack and test it in
 $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 ```
 
+## Extra notes
+
+* You can run all above actions (install_deps, compile, download_data, run_analysis, post_process and plot using one command: 
+```
+$ ck run scc-workflow
+```
+
+* This CK repository depends on another CK repository: [ck-env](https://reproindex.com/components/4adfaff6d69d41a9:1ff43ae88715a8c1).
+  This dependency is described in the [.ckr.json](https://github.com/reproindex/ck-scc/blob/master/.ckr.json#L9) file.
+
 ## Future work
 
 We plan to add [automatic detection](https://ReproIndex.com/components/&c=soft) of required software, models and data sets,
-[installation of missing packages](https://ReproIndex.com/components/&c=package), unified benchmarking
-and experiment reply based on this [CK SCC18 example](https://github.com/ctuning/ck-scc18).
-We also plan to automate submission, visualization and comparison of results 
+[installation of missing packages](https://ReproIndex.com/components/&c=package), unified benchmarking,
+and experiment reply based on the [SCC'18 CK workflow](https://github.com/ctuning/ck-scc18).
+We also plan to automate visualization and comparison of results 
 via [CK dashboards](https://cKnowledge.org/dashboard).
+Feel free to send your own patches with enhancements for this workflow!
 
 ## Feedback 
 
 If you have questions or suggestions, do not hesitate to contact us via 
 our [open discussion group](https://groups.google.com/forum/#!forum/collective-knowledge) 
-or our [Slack channel](http://bit.ly/ck-slack).
+or the [CK Slack channel](http://bit.ly/ck-slack).

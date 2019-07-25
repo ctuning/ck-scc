@@ -1,10 +1,10 @@
 #
-# Collective Knowledge ()
+# Collective Knowledge actions for SCC applications
 #
+# See CK LICENSE.txt for licensing details
+# See CK COPYRIGHT.txt for copyright details
 #
-#
-#
-# Developer:
+# Developer: Grigori Fursin
 #
 
 cfg={}  # Will be updated by CK (meta description of this module)
@@ -12,6 +12,8 @@ work={} # Will be updated by CK (temporal data)
 ck=None # Will be updated by CK (initialized CK kernel)
 
 import os
+
+line='*********************************************************************'
 
 ##############################################################################
 # Initialize module
@@ -31,12 +33,44 @@ def init(i):
     return {'return':0}
 
 ##############################################################################
+# run all steps of the workflow ...
+
+def run(i):
+    """
+    Input:  {
+              (data_uoa) - CK entry with your digital artifact
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    r=find_artifact(i)
+    if r['return']>0: return r
+
+    duoa=r['data_uoa']
+
+    for action in ['install_deps', 'compile', 'download_data', 
+                   'run_analysis', 'post_process', 'plot']:
+        ck.out(line)
+        r=ck.access({'action':action,
+                     'module_uoa':work['self_module_uid'],
+                     'data_uoa':duoa})
+        if r['return']>0: return r
+
+    return {'return':0}
+
+##############################################################################
 # compile application
 
 def compile(i):
     """
     Input:  {
-              (data_uoa) - CK entry with artifacts
+              (data_uoa) - CK entry with your digital artifact
             }
 
     Output: {
@@ -47,74 +81,29 @@ def compile(i):
 
     """
 
-    # Find artifact
-
+    # Find digital artifact
     r=find_artifact(i)
     if r['return']>0: return  r
 
     duoa=r['data_uoa']
+    p=r['path']
 
     ck.out('')
-    ck.out('TBD')
+    ck.out('Compiling SCC application ...')
 
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'compile')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    s='./compile.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
 
     return {'return':0}
 
-##############################################################################
-# run application
-
-def run(i):
-    """
-    Input:  {
-              (data_uoa) - CK entry with artifacts
-            }
-
-    Output: {
-              return       - return code =  0, if successful
-                                         >  0, if error
-              (error)      - error text if return > 0
-            }
-
-    """
-
-    r=find_artifact(i)
-    if r['return']>0: return r
-
-    duoa=r['data_uoa']
-
-    ck.out('')
-    ck.out('TBD')
-
-
-    return {'return':0}
-
-##############################################################################
-# test workflow
-
-def test(i):
-    """
-    Input:  {
-              (data_uoa) - CK entry with artifacts
-            }
-
-    Output: {
-              return       - return code =  0, if successful
-                                         >  0, if error
-              (error)      - error text if return > 0
-            }
-
-    """
-
-    r=find_artifact(i)
-    if r['return']>0: return r
-
-    duoa=r['data_uoa']
-
-    ck.out('')
-    ck.out('TBD')
-
-
-    return {'return':0}
 
 ##############################################################################
 # plot graphs
@@ -122,7 +111,7 @@ def test(i):
 def plot(i):
     """
     Input:  {
-              (data_uoa) - CK entry with artifacts
+              (data_uoa) - CK entry with your digital artifact
             }
 
     Output: {
@@ -133,16 +122,29 @@ def plot(i):
 
     """
 
+    # Find digital artifact
     r=find_artifact(i)
-    if r['return']>0: return r
+    if r['return']>0: return  r
 
     duoa=r['data_uoa']
+    p=r['path']
 
     ck.out('')
-    ck.out('TBD')
+    ck.out('Plotting graphs ...')
 
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'figures')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    s='./scripts/plot.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
 
     return {'return':0}
+
 
 ##############################################################################
 # prepare SCC workflow
@@ -394,3 +396,171 @@ def pack(i):
     ck.out('Digital Artifact Archive: '+filename)
 
     return {'return':0}
+
+##############################################################################
+# download data for the workflow
+
+def download_data(i):
+    """
+    Input:  {
+              (data_uoa) - CK entry with your digital artifact
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    r=find_artifact(i)
+    if r['return']>0: return r
+
+    duoa=r['data_uoa']
+    p=r['path']
+
+    ck.out('')
+    ck.out('Downloading dataset for the SCC workflow ...')
+
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'run')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    if os.path.isfile('global.csv'):
+       os.remove('global.csv')
+
+    s='scripts/download-data.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
+
+    if not os.path.isfile('global.csv'):
+       return {'return':1, 'error':'downloading "global.csv" failed'}
+    else:
+       ck.out('global.csv downloaded!')
+
+    return {'return':0}
+
+##############################################################################
+# install dependencies
+
+def install_deps(i):
+    """
+    Input:  {
+              (data_uoa) - CK entry with your digital artifact
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    # Find digital artifact
+    r=find_artifact(i)
+    if r['return']>0: return  r
+
+    duoa=r['data_uoa']
+    p=r['path']
+
+    ck.out('')
+    ck.out('Installing dependencies for the SCC workflow ...')
+
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'compile')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    s='./install-deps.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
+
+    return {'return':0}
+
+##############################################################################
+# run application
+
+def run_analysis(i):
+    """
+    Input:  {
+              (data_uoa) - CK entry with your digital artifact
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    # Find digital artifact
+    r=find_artifact(i)
+    if r['return']>0: return  r
+
+    duoa=r['data_uoa']
+    p=r['path']
+
+    ck.out('')
+    ck.out('Running SCC application ...')
+
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'run')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    s='./scripts/run.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
+
+    return {'return':0}
+
+##############################################################################
+# post process results
+
+def post_process(i):
+    """
+    Input:  {
+              (data_uoa) - CK entry with your digital artifact
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    # Find digital artifact
+    r=find_artifact(i)
+    if r['return']>0: return  r
+
+    duoa=r['data_uoa']
+    p=r['path']
+
+    ck.out('')
+    ck.out('Post-processing and validating results ...')
+
+    pr=os.path.join(p, 'ReproducibilityChallenge', 'run')
+    ck.out('')
+    ck.out('$ cd '+pr)
+    os.chdir(pr)
+
+    s='./scripts/post-process.sh'
+    ck.out('')
+    ck.out('$ '+s)
+    ck.out('')
+    os.system(s)
+
+    return {'return':0}
+
