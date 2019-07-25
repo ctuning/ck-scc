@@ -186,6 +186,7 @@ $ ck plot scc-workflow
 You should also describe how to plot graphs in the following ReadMe file:
 ```
 ReproducibilityChallenge/figures/scripts/README
+```
 
 ## Packing your Digital Artifact
 
