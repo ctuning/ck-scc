@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This repository contains an evolving [Collective Knowledge](https://cKnowledge.org) 
+This repository contains an evolving [Collective Knowledge](https://github.com/ctuning/ck) 
 workflow to standardize the preparation, execution and validation of submissions
 (Digital Artifacts) for the [Student Cluster Competition Reproducibility Challenge](http://www.studentclustercompetition.us/)
 
