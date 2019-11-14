@@ -222,15 +222,10 @@ $ ck run scc-workflow
 
 ## Future work
 
-We plan to add [automatic detection](https://ReproIndex.com/components/&c=soft) of required software, models and data sets,
-[installation of missing packages](https://ReproIndex.com/components/&c=package), unified benchmarking,
+We plan to add [automatic detection](https://dev.codereef.ai/portal/search/?q=module_uoa%3Asoft) of required software, models and data sets,
+[installation of missing packages](https://dev.codereef.ai/portal/search/?q=module_uoa%3Apackage), unified benchmarking,
 and experiment reply based on the [SCC'18 CK workflow](https://github.com/ctuning/ck-scc18).
 We also plan to automate visualization and comparison of results 
-via [CK dashboards](https://cKnowledge.org/dashboard).
-Feel free to send your own patches with enhancements for this workflow!
+via universal [CodeReef dashboards](https://dev.codereef.ai/portal/c/cr-result/sota-mlperf-inference-results-v0.5-open-available).
 
-## Feedback 
-
-If you have questions or suggestions, do not hesitate to contact us via 
-our [open discussion group](https://groups.google.com/forum/#!forum/collective-knowledge) 
-or the [CK Slack channel](http://bit.ly/ck-slack).
+Please feel free to get in touch with [Grigori Fursin](https://fursin.net/research) for more details.
