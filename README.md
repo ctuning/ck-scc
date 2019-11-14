@@ -18,7 +18,7 @@ You need to install the Collective Knowledge framework (CK) as described
 
 CK is a community project to share and reuse automation tasks in the form 
 of [Python actions with Unique ID, JSON meta description and standardized API](https://reproindex.com/components/&c=module). 
-For example, you can see all Python actions for this SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
+For example, you can see all the Python actions for this SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
 
 CK was designed to be very small and portable: 
 CK only requires Python 2.7 or 3+, git and wget, 
