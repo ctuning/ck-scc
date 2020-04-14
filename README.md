@@ -217,7 +217,7 @@ $ ck add repo --zip=ckr-scc-2019-{TN}.zip --quiet
 $ ck run scc-workflow
 ```
 
-* This CK repository depends on another CK repository: [ck-env](https://dev.codereef.ai/portal/c/cr-repo/ck-env).
+* This CK repository depends on another CK repository: [ck-env](https://cKnowledge.io/c/ck-repo/ck-env).
   This dependency is described in the [.ckr.json](https://github.com/reproindex/ck-scc/blob/master/.ckr.json#L9) file.
 
 ## Future work
