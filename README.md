@@ -17,15 +17,6 @@ You need to install the Collective Knowledge framework (CK) as described
 
 CK is a community project to share and reuse automation tasks in the form 
 of [Python actions with Unique ID, JSON meta description and standardized API](https://cKnowledge.io/modules). 
-For example, you can see all the Python actions for this SCC workflow [here](https://github.com/ctuning/ck-scc/blob/master/module/scc-workflow/module.py).
-
-CK was designed to be very small and portable: 
-CK only requires Python 2.7 or 3+, git and wget, 
-can run natively on practically any system, and complements many existing DevOps tools.
-If you encounter a problem during installation, do not hesitate 
-to submit a [GitHub ticket](https://github.com/ctuning/ck/issues)
-or ask for help using the [CK Slack channel](https://bit.ly/ck-slack) 
-or [CK Google group](https://bit.ly/ck-google-group).
 
 If you have never used CK, we also suggest you to check 
 this [blog article](https://michel.steuwer.info/About-CK) and
