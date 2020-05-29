@@ -1,7 +1,7 @@
 ## Collective Knowledge workflow for the Student Cluster Competition (SCC)
 
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
-[![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://ReproIndex.com)
+[![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 [![workflow](https://github.com/ctuning/ck-guide-images/blob/master/ck-workflow.svg)](https://cKnowledge.org)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
@@ -17,8 +17,8 @@ You need to install the Collective Knowledge framework (CK) as described
 [here](https://github.com/ctuning/ck#Installation). 
 
 CK is a community project to share and reuse automation tasks in the form 
-of [Python actions with Unique ID, JSON meta description and standardized API](https://reproindex.com/components/&c=module). 
-For example, you can see all the Python actions for this SCC workflow [here](https://github.com/reproindex/ck-scc/blob/master/module/scc-workflow/module.py).
+of [Python actions with Unique ID, JSON meta description and standardized API](https://cKnowledge.io/modules). 
+For example, you can see all the Python actions for this SCC workflow [here](https://github.com/ctuning/ck-scc/blob/master/module/scc-workflow/module.py).
 
 CK was designed to be very small and portable: 
 CK only requires Python 2.7 or 3+, git and wget, 
@@ -37,7 +37,7 @@ the [CK getting started guide](https://github.com/ctuning/ck/wiki/First-Steps).
 You need to install this repository to be able to reuse CK-SCC automation actions as follows:
 
 ```
-$ ck pull repo --url=https://github.com/reproindex/ck-scc
+$ ck pull repo --url=https://github.com/ctuning/ck-scc
 ```
 
 ## Creating a dummy CK repository for your Digital Artifact
@@ -54,7 +54,7 @@ It will then create a CK repository "scc-{YEAR}-{TEAM}"
 with a CK entry "scc-workflow:{YEAR}-{TEAM}" to keep your Digital Artifact.
 This entry will already have a directory structure required 
 for your artifact submission (taken from the CK entry 
-"[scc-workflow:template](https://github.com/reproindex/ck-scc/tree/master/scc-workflow/template)").
+"[scc-workflow:template](https://github.com/ctuning/ck-scc/tree/master/scc-workflow/template)").
 
 For example, if your team number is 2 and the competition year is 2019, 
 CK will create repo:scc-2019-2 with an entry scc-workflow:2019-2:
@@ -218,7 +218,7 @@ $ ck run scc-workflow
 ```
 
 * This CK repository depends on another CK repository: [ck-env](https://cKnowledge.io/c/ck-repo/ck-env).
-  This dependency is described in the [.ckr.json](https://github.com/reproindex/ck-scc/blob/master/.ckr.json#L9) file.
+  This dependency is described in the [.ckr.json](https://github.com/ctuning/ck-scc/blob/master/.ckr.json#L9) file.
 
 ## Future work
 
