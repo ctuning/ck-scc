@@ -16,7 +16,8 @@ You need to install the Collective Knowledge framework (CK) as described
 [here](https://github.com/ctuning/ck#Installation). 
 
 CK is a community project to share and reuse automation tasks in the form 
-of [Python actions with Unique ID, JSON meta description and standardized API](https://cKnowledge.io/modules). 
+of [Python actions with Unique ID, JSON meta description and standardized API](https://cKnowledge.io/actions). 
+It is used to support [reproducibility initiatives](https://cTuning.org/ae) at ML&systems conferences.
 
 If you have never used CK, we also suggest you to check 
 this [blog article](https://michel.steuwer.info/About-CK) and
